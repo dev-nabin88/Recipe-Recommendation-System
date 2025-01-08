@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommendation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .recipe-card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            height: 350px; /* Fixed height for cards */
+        }
+        .recipe-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+        .recipe-image {
+            max-height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 200px; /* Fixed height for image */
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .form-container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow for the form */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .form-control {
+            border-radius: 5px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+        .form-control:focus {
+            border-color: #5cb85c;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+        }
+        .btn-primary {
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            background-color: #4cae4c;
+            border-color: #398439;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .navbar-custom {
+            background: linear-gradient(to right, #e3451d, #feb47b);
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: white;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #f8f9fa;
+        }
+        .btn-search {
+            background-color: #ff6347;
+            border-color: #ff6347;
+        }
+        .btn-search:hover {
+            background-color: #ff4500;
+            border-color: #ff4500;
+        }
+        .navbar-toggler {
+            border-color: rgba(255,255,255,0.5);
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        .iframe-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background-color: #f8f9fa;
+        }
+        .iframe-wrapper {
+            max-width: 100%;
+            width: 640px;
+            height: 1047px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+.btn{
+    margin: auto;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">RecipeHub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/appetizers">Appetizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/main-course">Main Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dessarts">Desserts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/drinks">Drinks</a>
+                    </li>
+                </ul>
+                <a class="btn btn-search text-white" type="submit" href="/#recommendation">Get Recommendation</a>
+                <a class="btn btn-search text-white" type="submit">Contribute</a>
+            </div>
+        </div>
+    </nav>
+    <div class="iframe-container">
+        <div class="iframe-wrapper">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScfXAqOXFExbt0jYBWc1b2za3MsIVqD4ooIH2MD8v0LflOpgQ/viewform?embedded=true">
+                Loading...
+            </iframe>
+        </div>
+    </div>
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2023 RecipeHub. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
